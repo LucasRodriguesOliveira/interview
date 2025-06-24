@@ -1,0 +1,116 @@
+type: collection.insomnia.rest/5.0
+name: Interview
+meta:
+  id: wrk_1daa81a5e2bb468f88441badbdd69c39
+  created: 1750768172812
+  modified: 1750776432932
+  description: ""
+collection:
+  - name: Task
+    meta:
+      id: fld_88dc0206152a4316ad1aa9788565226e
+      created: 1750768186882
+      modified: 1750768186882
+      sortKey: -1750768186882
+      description: ""
+    children:
+      - url: "{{ _.baseUrl }}/task"
+        name: Create
+        meta:
+          id: req_9617e88632b2435ca6661193f93d72b1
+          created: 1750768172892
+          modified: 1750768396679
+          isPrivate: false
+          description: ""
+          sortKey: -1750768191326
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"title": "Test",
+            	"description": "some description",
+            	"userEmail": "{% faker 'randomEmail' %}",
+            	"date": "{% faker 'randomDateRecent' %}"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.2.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.baseUrl }}/task"
+        name: List
+        meta:
+          id: req_5a16b6b95b4f49348a41cb9cb2338867
+          created: 1750773756688
+          modified: 1750773767489
+          isPrivate: false
+          description: ""
+          sortKey: -1750773756688
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.2.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.baseUrl }}/task/:taskId"
+        name: Find by Id
+        meta:
+          id: req_e0f3eec349c64d0b8528332615831402
+          created: 1750774132564
+          modified: 1750774158700
+          isPrivate: false
+          description: ""
+          sortKey: -1750774132564
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.2.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+        pathParameters:
+          - name: taskId
+            value: 685a9ebf5ac42c09b95f9883
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_af099097dec4c08ce8bd63a6f1ff68bccaef3979
+    created: 1750768172833
+    modified: 1750768172833
+environments:
+  name: Base Environment
+  meta:
+    id: env_af099097dec4c08ce8bd63a6f1ff68bccaef3979
+    created: 1750768172831
+    modified: 1750768172831
+    isPrivate: false
+  subEnvironments:
+    - name: Development
+      meta:
+        id: env_1d309acbb0bb4a4fa9dc897f530e8929
+        created: 1750768207500
+        modified: 1750768247181
+        isPrivate: false
+        sortKey: 1750768207500
+      data:
+        baseUrl: http://localhost:3000

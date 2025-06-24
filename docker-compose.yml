@@ -1,16 +1,27 @@
-version: '3.8'
-
 services:
-  mongodb:
-    image: mongo:latest
-    container_name: mongodb
+  app:
+    container_name: interview_app
+    build:
+      context: .
+      dockerfile: Dockerfile
+    env_file:
+      - .env
     ports:
-      - '27017:27017'
+      - "${PORT}:${PORT}"
+    depends_on:
+      - db
+      - redis
+  db:
+    image: mongo:latest
+    container_name: interview_mongodb
+    ports:
+      - '${DB_PORT}:${DB_PORT}'
     environment:
-      - MONGO_INITDB_ROOT_USERNAME=test
-      - MONGO_INITDB_ROOT_PASSWORD=test
-    volumes:
-      - mongodb_data:/data/db
-
-volumes:
-  mongodb_data:
+      MONGO_INITDB_ROOT_USERNAME: ${DB_USERNAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${DB_PASSWORD}
+      MONGO_INITDB_DATABASE: ${DB_NAME}
+  redis:
+    image: redis:alpine
+    container_name: interview_redis
+    ports:
+      - '${REDIS_PORT}:${REDIS_PORT}'
