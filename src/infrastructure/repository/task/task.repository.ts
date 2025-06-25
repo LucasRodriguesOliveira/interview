@@ -23,7 +23,10 @@ export class TaskRepository implements ITaskRepository {
   public async findAll(): Promise<TaskModel[]> {
     const tasks = await this.taskModel.find().exec();
 
-    return plainToInstance(ListTaskPresenter, tasks.map((task) => task.toObject()))
+    return plainToInstance(
+      ListTaskPresenter,
+      tasks.map((task) => task.toObject()),
+    );
   }
 
   public async findOne(id: string): Promise<TaskModel> {

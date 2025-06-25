@@ -1,9 +1,14 @@
-import { Exclude, Expose, Transform, TransformFnParams } from 'class-transformer';
+import {
+  Exclude,
+  Expose,
+  Transform,
+  TransformFnParams,
+} from 'class-transformer';
 import { TaskModel } from '../../../../domain/model/task';
 
 @Exclude()
 export class CreateTaskPresenter extends TaskModel {
-  @Transform(({ obj }: TransformFnParams) => obj._id)
+  @Transform(({ obj }: TransformFnParams) => obj._id as string)
   @Expose()
   declare id: string;
 

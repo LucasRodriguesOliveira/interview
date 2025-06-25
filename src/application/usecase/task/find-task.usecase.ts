@@ -39,7 +39,7 @@ export class FindTaskUseCase {
       const log = {
         message: 'Task could not be found',
         params: { taskId },
-        error,
+        error: error as Error,
       };
 
       this.loggerService.error(FindTaskUseCase.name, JSON.stringify(log));
@@ -49,7 +49,7 @@ export class FindTaskUseCase {
           code: 'COULD_NOT_FIND_TASK',
           message: log.message,
         },
-      }
+      };
     }
   }
 }
