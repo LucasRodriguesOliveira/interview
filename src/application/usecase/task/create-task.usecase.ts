@@ -47,7 +47,7 @@ export class CreateTaskUsecase {
       const log = {
         message: 'Task could not be created',
         params: taskData,
-        error,
+        error: error as Error,
       };
 
       this.loggerService.error(CreateTaskUsecase.name, JSON.stringify(log));

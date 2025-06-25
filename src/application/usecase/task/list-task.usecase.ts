@@ -20,7 +20,10 @@ export class ListTaskUseCase {
         task.user = this.cryptoService.decrypt(task.user);
       });
 
-      this.loggerService.log(ListTaskUseCase.name, `Listing [${taskList.length}] tasks`);
+      this.loggerService.log(
+        ListTaskUseCase.name,
+        `Listing [${taskList.length}] tasks`,
+      );
 
       return {
         value: taskList,
@@ -29,7 +32,7 @@ export class ListTaskUseCase {
       const log = {
         message: 'Could not get a list of tasks',
         params: null,
-        error,
+        error: error as Error,
       };
 
       this.loggerService.error(ListTaskUseCase.name, JSON.stringify(log));
@@ -39,7 +42,7 @@ export class ListTaskUseCase {
           code: 'UNEXPECTED',
           message: log.message,
         },
-      }
+      };
     }
   }
 }

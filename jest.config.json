@@ -1,0 +1,39 @@
+{
+  "moduleFileExtensions": ["js", "json", "ts"],
+  "rootDir": "./src",
+  "testEnvironment": "node",
+  "testRegex": ".*\\.spec\\.ts$",
+  "transform": {
+    "^.+\\.(t|j)s$": "ts-jest"
+  },
+  "testPathIgnorePatterns": [
+    ".e2e-spec.ts"
+  ],
+  "coveragePathIgnorePatterns": [
+    "<rootDir>/application/constants/*",
+    "<rootDir>/infrastructure/config/*",
+    "<rootDir>/infrastructure/common/*",
+    "<rootDir>/infrastructure/exception/*",
+    "<rootDir>/infrastructure/grpc/*",
+    "<rootDir>/infrastructure/service/logger/*",
+    "<rootDir>/infrastructure/proxy/*",
+    "<rootDir>/infrastructure/prisma/*",
+    "<rootDir>/infrastructure/database/*",
+    "<rootDir>/domain/*",
+    ".module.ts",
+    ".dto.ts",
+    "node_modules",
+    "<rootDir>/main.ts",
+    "dist",
+    ".interceptor.ts",
+    "prisma/",
+    ".enum.ts",
+    ".presenter.ts",
+    ".result.ts",
+    "__snapshots__"
+  ],
+  "collectCoverageFrom": [
+    "<rootDir>/**/*.ts"
+  ],
+  "coverageDirectory": "<rootDir>/../coverage/"
+}

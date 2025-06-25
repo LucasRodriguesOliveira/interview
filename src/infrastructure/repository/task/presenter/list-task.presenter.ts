@@ -8,7 +8,7 @@ import { TaskModel } from '../../../../domain/model/task';
 
 @Exclude()
 export class ListTaskPresenter extends TaskModel {
-  @Transform(({ obj }: TransformFnParams) => obj._id)
+  @Transform(({ obj }: TransformFnParams) => obj._id as string)
   @Expose()
   declare id: string;
 
